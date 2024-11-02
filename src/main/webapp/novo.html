@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chamados</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef; /* cinza claro */
+            color: #343a40; /* texto escuro */
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h3 {
+            color: black;
+            margin-bottom: 20px;
+        }
+
+        select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            
+            border-radius: 5px;
+            transition: border-color 0.3s;
+            box-sizing: border-box; /* Garante que padding não afete a largura */
+        }
+
+        select:focus, textarea:focus {
+            border-color: #0056b3; /* azul mais escuro */
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical; /* Permite redimensionar verticalmente */
+            height: 150px; /* Altura padrão */
+        }
+
+        button {
+            color: white;
+            background-color: gray;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: black;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+            color: #007bff; /* azul */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #0056b3; /* azul mais escuro */
+        }
+    </style>
+</head>
+<body>
+
+<form action="novoChamado" method="get" onsubmit="return sucesso()">
+    <div class="menu">
+        <h3>Novo Chamado</h3>
+        Setor
+        <select id="setor" name="setor" required>
+            <option value="" disabled selected>Selecione um setor</option>
+            <option value="FUNDICAO">FUNDICAO</option>
+            <option value="ADMINISTRACAO">ADMINISTRACAO</option>
+            <option value="USINAGEM">USINAGEM</option>
+            <option value="POLIMENTO">POLIMENTO</option>
+            <option value="MONTAGEM">MONTAGEM</option>
+            <option value="GALVANICA">GALVANICA</option>
+            <option value="HIGH COAT">HIGH COAT</option>
+            <option value="ALMOXARIFADO">ALMOXARIFADO</option>
+        </select>
+
+        Descrição:
+        <textarea id="descricao" name="descricao" required></textarea>
+        
+        <a href="home.html">Cancelar</a>
+        <button type="submit">Registrar Chamado</button>
+    </div>
+</form>
+
+<script>
+function sucesso() {
+    const setor = document.getElementById('setor').value;
+    const descricao = document.getElementById('descricao').value;
+
+    if (setor === "" || descricao === "") {
+        alert('Preencha os campos necessários!');
+        return false; // Interrompe o envio do formulário
+    }
+
+    alert('Chamado registrado!');
+    return true; // Permite o envio do formulário
+}
+</script>
+
+</body>
+</html>

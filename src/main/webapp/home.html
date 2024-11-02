@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Solicitar Manutenção</title>
+    <style>
+    
+    a{
+    text-decoration: none;
+    font-size: 14px;
+    }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef; /* cinza claro */
+            color: #343a40; /* texto escuro */
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 30px;
+        }
+        h3 {
+            color: black;
+            margin-bottom: 20px;
+        }
+        .btn-novo {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: gray;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        .btn-novo:hover {
+            background-color: black;
+        }
+        input {
+            padding: 12px;
+            margin-top: 10px;
+            border: 1px solid black; 
+            border-radius: 5px;
+            width: 250px;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            border-color: #0056b3; /* azul mais escuro */
+            outline: none;
+        }
+        h4 {
+            margin-top: 30px;
+            color: #495057; /* cinza escuro */
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h3>Solicitar Manutenção</h3>
+    <a href="novo.html" class="btn-novo">Registrar chamado</a>
+   
+    <input type="text" id="senha" placeholder="senha" onkeydown="verificarautenticacao()">
+   
+    <script>
+        function verificarautenticacao() {
+            var senha = document.getElementById('senha').value; // Ensure 'senha' is a string
+            if (senha === '0000') {
+                window.location.href = 'listarChamados';
+            }
+        }
+    </script>
+</body>
+</html>
