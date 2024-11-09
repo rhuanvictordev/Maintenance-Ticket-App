@@ -1,0 +1,36 @@
+create database manutencao;
+use manutencao;
+
+create table chamados(
+id int primary key auto_increment,
+setor varchar(100),
+equipamento varchar(100),
+motivo varchar(1000),
+tipo varchar(100),
+causa varchar(10000),
+descricao varchar(1000),
+evitado varchar(1000),
+observacao varchar(1000),
+dataocorrencia varchar(30),
+horaocorrencia varchar(30),
+datainicio varchar(30),
+horainicio varchar(30),
+datatermino varchar(30),
+horatermino varchar(30),
+operador varchar(100),
+tecnico varchar(100)
+);
+
+describe chamados;
+
+insert into chamados (setor, equipamento, motivo, tipo, causa, descricao, evitado, observacao, dataocorrencia, horaocorrencia, datainicio, horainicio, datatermino, horatermino, operador, tecnico) values
+("FUNDIÇÃO","Lixadeira Nova","Instalação","Melhoria","Usaram errado","Instalação da lixadeira nova","não usando a lixa","Muito tempo para a conclusão devido a outros chamados","01-02-2024","13:00","01-02-2024","13:00","02-02-2024","13:00","Marcelo","Adelson");
+
+select * from chamados order by id;
+select * from chamados;
+truncate chamados;
+drop table chamados;
+
+update chamados set setor="A", equipamento="A", motivo="A", tipo="A", causa="A", descricao="A", evitado="A", observacao="A", dataocorrencia="A", horaocorrencia="A", datainicio="A", horainicio="A", datatermino="A", horatermino="A", operador="A", tecnico="A"where id = "2";
+
+DELETE FROM chamados WHERE id = 5;
