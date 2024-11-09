@@ -43,7 +43,7 @@ public class ControllerInserir extends HttpServlet {
     this.chamado.setCausa("");
     this.chamado.setDescricao(request.getParameter("descricao"));
     this.chamado.setEvitado("");
-    this.chamado.setObservacao("");
+    this.chamado.setObservacao("Aguardando");
     this.chamado.setDataocorrencia(dataFormatada);
     this.chamado.setHoraocorrencia(horaFormatada);
     this.chamado.setDatainicio("");

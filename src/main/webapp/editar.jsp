@@ -144,7 +144,12 @@ button:hover {
 
 
 			<h4 style="text-align: center; margin-left: -1046px;">Observação:</h4>
-			<textarea name="observacao"><%=request.getAttribute("observacao")%></textarea>
+			
+			
+			<select name="observacao" style="margin-left: -1046px">
+    <option value="Aguardando" <%= "Aguardando".equals(request.getAttribute("observacao")) ? "selected" : "" %>>Aguardando</option>
+    <option value="Realizado" <%= "Realizado".equals(request.getAttribute("observacao")) ? "selected" : "" %>>Realizado</option>
+</select>
 
 
 

@@ -37,7 +37,7 @@ th, td {
 }
 
 th {
-    background-color: graytext;
+    background-color: gray;
     color: white;
 }
 
@@ -49,46 +49,73 @@ tr:hover {
     background-color: #ddd;
 }
 
-a{
-text-decoration: none;
+a {
+    text-decoration: none;
 }
 
-
+.quadrado {
+    width: 20px;
+    height: 20px;
+    border-radius: 80px;
+    margin-left: 44%;
+}
 
 </style>
 
 <body>
-	<h1>Lista de Chamados</h1>
-	<a href="home.html">Tela inicial</a>
-	
-	
-	<table>
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Setor</th>
-				<th>Descrição</th>
-				<th>Data da Ocorrência</th>
-				<th>Opções</th>
+    <h1>Lista de Chamados</h1>
+    <a href="home.html">Tela inicial</a>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Setor</th>
+                <th>Descrição</th>
+                <th>Data da Ocorrência</th>
+                <th>Opções</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(int i=0; i<lista.size(); i++) { %>
+            <tr>
+                <td><%= lista.get(i).getId() %></td>
+                <td><%= lista.get(i).getSetor() %></td>
+                <td><%= lista.get(i).getDescricao() %></td>
+                <td><%= lista.get(i).getDataocorrencia() %></td>
+                <td>
+                <a href="listarChamado?id=<%= lista.get(i).getId() %>" style="color: rgb(0, 30, 255);">Editar</a>
+                &nbsp; | &nbsp;
+                <a href="excluirChamado?id=<%= lista.get(i).getId() %>" style="color: rgb(255, 0, 0);">Excluir</a>
+                </td>
+                
+                
+                <td>
+                
+                <div class="quadrado" data-status="<%= lista.get(i).getObservacao() %>"></div>
+
+				</td>
 				
 				
-				
-			</tr>
-		</thead>
-			<tbody>
-				<% for(int i=0; i<lista.size(); i++) { %>
-				<tr>
-				<td><%=lista.get(i).getId() %></td>
-				<td><%=lista.get(i).getSetor() %></td>
-				<td><%=lista.get(i).getDescricao() %></td>
-				<td><%=lista.get(i).getDataocorrencia() %></td>
-				<td><a href="listarChamado?id=<%=lista.get(i).getId()%>" style="color: rgb(0, 30, 255);" >Editar</a>
-					&nbsp; | &nbsp;
-				<a href="excluirChamado?id=<%=lista.get(i).getId()%>" style="color: rgb(255, 0, 0);">Excluir</a></td>
-				
-				</tr>
-				<% } %>
-			</tbody>
-	</table>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
 </body>
+
+<script>
+window.onload = function() {
+    let statusElements = document.getElementsByClassName("quadrado");
+    for (let i = 0; i < statusElements.length; i++) {
+        let status = statusElements[i].getAttribute("data-status");
+        if (status === "Aguardando") {
+            statusElements[i].style.background = "rgb(255, 0, 0)"; // Cor vermelha para "Aguardando"
+        } else {
+            statusElements[i].style.background = "rgb(0, 255, 0)"; // Cor verde para outros status
+        }
+    }
+};
+</script>
+
 </html>
